@@ -1,23 +1,14 @@
-import { atom, useRecoilValue } from "recoil";
-
-
-const todoListState = atom({
-    key: 'todoListState',
-    default: [
-        {
-            id: 0,
-            title: 'メール送信',
-            isComplete: false,
-        },
-    ],
-});
+import { useRecoilValue } from "recoil";
+import { todoListState } from '../recoil/Atom'
+import { TodoListStats } from './TodoListStats'
 
 export const TodoList = () => {
     const todoList = useRecoilValue(todoListState)
-    console.log(todoList)
+
     return (
         <>
-            <h1>RecoilによるTodoアプリ</h1>
+            <h1>RecoilによるTodoアプリんん</h1>
+            <TodoListStats />
             {todoList.map((item) => (
                 <div key={item.id}>
                     {item.title}
