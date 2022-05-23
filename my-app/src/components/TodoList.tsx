@@ -1,6 +1,8 @@
 import { useRecoilValue } from "recoil";
 import { todoListState } from '../recoil/Atom'
 import { TodoListStats } from './TodoListStats'
+import { TodoItemCreator } from "./TodoItemCreator";
+import { TotoItem } from './TotoItem'
 
 export const TodoList = () => {
     const todoList = useRecoilValue(todoListState)
@@ -9,10 +11,10 @@ export const TodoList = () => {
         <>
             <h1>RecoilによるTodoアプリんん</h1>
             <TodoListStats />
+            <TodoItemCreator />
+
             {todoList.map((item) => (
-                <div key={item.id}>
-                    {item.title}
-                </div>
+                <TotoItem id={item.id} title={item.title} />
             ))}
             <div>
                 <p>学習中</p>
@@ -22,3 +24,8 @@ export const TodoList = () => {
         </>
     );
 }
+
+// 役割と使い方を復習する
+// useRecoilValue
+// useRecoilState
+// useSetRecoilState
