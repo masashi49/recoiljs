@@ -9,6 +9,7 @@ interface HandleNameChangeInterface {
 
 export const TodoItemCreator = () => {
     const [title, setTitle] = useState('');
+    const [taskIndex, setTaskIndex] = useState(2);
     const setTodoList = useSetRecoilState(todoListState);
 
     const handleChange = (e: HandleNameChangeInterface) => {
@@ -16,28 +17,26 @@ export const TodoItemCreator = () => {
     };
 
     const addItem = () => {
-        setTodoList((oldTodoList) => [
-            ...oldTodoList,
-            {
-                id: getId(),
-                title: title,
-                isComplete: false,
-            },
-        ]);
+        setTaskIndex(taskIndex + 1)
+        setTodoList((oldTodoList) => {
+            return [
+                ...oldTodoList,
+                {
+                    id: taskIndex,
+                    title: title,
+                    isComplete: false,
+                },
+            ]
+        });
         setTitle('');
     };
 
     return (
         <>
-            <div>
+            <div className="addTackButton">
                 <input type="text" value={title} onChange={handleChange} />
                 <button onClick={addItem}>タスクの追加</button>
             </div>
         </>
     );
-}
-
-let id = 1;
-const getId = () => {
-    return id++;
 }
