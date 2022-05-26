@@ -10,7 +10,7 @@ export const TodoList = () => {
     const todoList = useRecoilValue(todoListState)
     return (
         <>
-            <h1>Recoilによるtodoリスト</h1>
+            <h1>Recoilを使ったtodoリスト</h1>
             <TodoListStats />
             <TodoItemCreator />
 
@@ -24,6 +24,7 @@ export const TodoList = () => {
 }
 
 
+//https://zenn.dev/yuki_yuki/articles/c3bac6943f70b6
 // useRecoilValue : recoilにセットした値を呼び出すだけ。(読み取り専用)
 // useRecoilState : 
 //   useStateと似ている、stateの取得・更新を行う。useStateと似ている
